@@ -1,0 +1,342 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/escaperoomstyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="src/jquery.ui.touch-punch.min.js"></script>
+    <script src="src/tfl.js"></script>
+    </head>
+    
+    <h1>Trapped on Level 14</h1>
+    <!--intro-->
+    <div id="intro" style="display: block;">
+    <p>You and your team find yourselves <br>
+        trapped in a very familiar place.<br>
+        In order to get out,<br>
+        your team needs to navigate around<br>
+        and figure a way out.<br>
+        Legend has it that, after you have solved<br> all puzzles in the 5 rooms, <br><strong>Solar Man</strong>
+        will rescue you!</p>
+        <p><img src="images/trapped.png" width="10%"></p>
+        <button onclick="showMainRoom()">START</button>
+    </div>
+    <!--main room-->
+    <div id="mainRoom" style="display: none;">
+        <h2>Level 14, MOE HQ</h2>
+    <img src="images/mainRoom.png" usemap="#mainMap">
+        <map name="mainMap">
+        <area shape="rect" coords="80,25,180,120" onclick="openLevelModal()">
+            <area shape="rect" coords="365,85,415,135" onclick="openToasterModal()">
+            <area shape="rect" coords="235,80,265,135" onclick="openTabletModal()">
+            <area shape="rect" coords="515,65,600,265" onclick="openFridgeModal()">
+            <area shape="rect" coords="265,285,415,360" onclick="checkStatus()">
+            <area shape="rect" coords="0,255,55,285" onclick="showSlsRoom()">
+            <area shape="rect" coords="0,165,60,200" onclick="showAiedRoom()">
+            <area shape="rect" coords="625,165,680,195" onclick="showCotfRoom()">
+            <area shape="rect" coords="625,260,680,285" onclick="showAlpmRoom()">
+        </map>
+    </div>
+    
+    <!--sls room-->
+    <div id="slsRoom" style="display: none;">
+        <h2>Singapore Student Learning Space</h2>
+    <img src="images/slsRoom.png" usemap="#slsMap">
+        <map name="slsMap">
+        <area shape="rect" coords="570,260,625,290" onclick="showMainRoom()">
+        <area shape="rect" coords="10,15,270,145" onclick="openAgileModal()">
+        <area shape="rect" coords="210,205,250,250" onclick="openReleaseModal()">
+        <area shape="rect" coords="460,115,500,160" onclick="openNoteModal()">
+        <area shape="rect" coords="285,85,410,145" onclick="showSlsPuzzle()">
+              </map>
+    </div>
+    
+    <!--aied room-->
+    <div id="aiedRoom" style="display: none;">
+        <h2>AI in Education</h2>
+    <img src="images/aiedRoom.png" usemap="#aiedMap">
+        <map name="aiedMap">
+        <area shape="rect" coords="570,260,625,290" onclick="showMainRoom()">
+        <area shape="rect" coords="10,15,180,125" onclick="openAiModal()">
+        <area shape="rect" coords="400,30,525,70" onclick="openDroneModal()">
+        <area shape="rect" coords="215,120,290,255" onclick="showAiedPuzzle()">
+        </map>
+    </div>
+    
+     <!--cotf room-->
+    <div id="cotfRoom" style="display: none;">
+        <h2>Classroom of the Future</h2>
+    <img src="images/cotfRoom.png" usemap="#cotfMap">
+        <map name="cotfMap">
+        <area shape="rect" coords="0,250,60,280" onclick="showMainRoom()">
+        <area shape="rect" coords="445,10,615,85" onclick="openDtModal()">
+        <area shape="rect" coords="325,85,380,125" onclick="openPostModal()">
+        <area shape="rect" coords="525,225,590,265" onclick="openProjectorModal()">
+        <area shape="rect" coords="75,155,260,230" onclick="showCotfPuzzle()">
+        </map>
+    </div>
+    
+    <!--alpm room-->
+    <div id="alpmRoom" style="display: none;">
+    <h2>Applied Learning Program & Maker Education</h2>
+    <img src="images/alpmRoom.png" usemap="#alpmMap">
+        <map name="alpmMap">
+        <area shape="rect" coords="0,260,60,280" onclick="showMainRoom()">
+        <area shape="rect" coords="215,85,255,135" onclick="openFolderModal()">
+        <area shape="rect" coords="285,60,415,130" onclick="open3dModal()">
+        <area shape="rect" coords="95,65,180,140" onclick="openMicroModal()">
+        <area shape="rect" coords="440,185,600,265" onclick="showAlpmPuzzle()">
+        </map>
+    </div>
+    
+    <!--exit room-->
+    <div id="exitRoom" style="display: none;">
+    <h2><strong>Congratulations!</strong></h2>
+        <p>Solar Man has arrived<br>
+        and helped your group escape level 14.<br>
+        He has brought the group to the rooftop<br>
+        and now we await the rescue rocket.<br>
+        <strong>Thank you SOLAR MAN!</strong></p>
+        <p><a href="solarman.html" target="_blank"><img src="images/solarMan.jpeg" width="15%"></a></p><p><button onclick="window.location.reload();">PLAY AGAIN</button></p>
+    </div>
+    
+    <!--main room puzzle-->
+    <div id="mainRoomPuzzle" style="display: none;">
+    <h2>The SOS Phone</h2>
+        <p>You find an SOS phone by the exit.<br>Dial the keys you have obtained to call upon Solar Man!</p>
+        <table border="1"><tr><td>G<input type="checkbox" id="c1"></td><td>W<input type="checkbox" id="c2"></td><td>J<input type="checkbox" id="c3"></td><td>F<input type="checkbox" id="c4"></td><td>V<input type="checkbox" id="c5"></td><td>E<input type="checkbox" id="c6"></td><td>I<input type="checkbox" id="c7"></td><td>6<input type="checkbox" id="c8"></td></tr><tr><td>A<input type="checkbox" id="c9"></td><td>U<input type="checkbox" id="c10"></td><td>3<input type="checkbox" id="c11"></td><td>N<input type="checkbox" id="c12"></td><td>P<input type="checkbox" id="c13"></td><td>G<input type="checkbox" id="c14"></td><td>H<input type="checkbox" id="c15"></td><td>4<input type="checkbox" id="c16"></td></tr><tr><td>X<input type="checkbox" id="c17"></td><td>B<input type="checkbox" id="c18"></td><td>A<input type="checkbox" id="c19"></td><td>C<input type="checkbox" id="c20"></td><td>U<input type="checkbox" id="c21"></td><td>O<input type="checkbox" id="c22"></td><td>P<input type="checkbox" id="c23"></td><td>T<input type="checkbox" id="c24"></td></tr><tr><td>Y<input type="checkbox" id="c25"></td><td>T<input type="checkbox" id="c26"></td><td>1<input type="checkbox" id="c27"></td><td>2<input type="checkbox" id="c28"></td><td>K<input type="checkbox" id="c29"></td><td>I<input type="checkbox" id="c30"></td><td>N<input type="checkbox" id="c31"></td><td>Q<input type="checkbox" id="c32"></td></tr><tr><td>S<input type="checkbox" id="c33"></td><td>I<input type="checkbox" id="c34"></td><td>R<input type="checkbox" id="c35"></td><td>L<input type="checkbox" id="c36"></td><td>M<input type="checkbox" id="c37"></td><td>Z<input type="checkbox" id="c38"></td><td>A<input type="checkbox" id="c39"></td><td>5<input type="checkbox" id="c40"></td></tr></table><br><button onclick="checkMainPuzzle()">DIAL</button>
+    </div>
+    
+   
+    <!--sls room puzzle-->
+    <div id="slsRoomPuzzle" style="display: none;">
+    <h2>The Computer Booted Up</h2>
+        <p>Username:<input id="slsUserInput"><br>Password:<input id="slsPassInput"><br><button onclick="checkSlsPuzzle()">LOGIN</button></p>
+    </div>
+    
+    <!--cotf room puzzle-->
+    <div id="cotfRoomPuzzle" style="display: none;">
+    <h2>Padlock on a Treasure Chest</h2>
+        <p><select id="cotf1"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">L</option><option value="7">M</option><option value="8">N</option><option value="9">O</option><option value="0">P</option></select>
+        <select id="cotf2"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">L</option><option value="7">M</option><option value="8">N</option><option value="9">O</option><option value="0">P</option></select>
+        <select id="cotf3"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">L</option><option value="7">M</option><option value="8">N</option><option value="9">O</option><option value="0">P</option></select>
+        <select id="cotf4"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">L</option><option value="7">M</option><option value="8">N</option><option value="9">O</option><option value="0">P</option></select></p>
+        <p><button onclick="checkCotfPuzzle()">UNLOCK</button>
+        </p>
+    </div>
+    
+    <!--aied room puzzle-->
+    <div id="aiedRoomPuzzle" style="display: none;">
+    <h2>A Sleeping Droid</h2>
+        <p>Switch on the droid by entering the correct sequence:</p>
+        <p>One of the AI use cases is Adaptive Learning System. <select id="aied1"><option selected disabled></option><option value="1">True</option><option value="2">False</option></select><br>
+        AMS stands for "Adaptive Marking System". <select id="aied2"><option selected disabled></option><option value="1">True</option><option value="2">False</option></select><br>
+        The Section Support Team conducts scans for the use of AI in Education. <select id="aied3"><option selected disabled></option><option value="1">True</option><option value="2">False</option></select><br>
+        <button onclick="checkAiedPuzzle()">SWITCH ON</button></p>
+    </div>
+    
+    <!--alpm room puzzle-->
+<div id="alpmRoomPuzzle" style="display: none;">
+    <h2>A Puzzle</h2>
+    <p>You see a weird puzzle with 4 missing pieces.</p>
+    <div id="content">
+  <div id="cardPile"> </div>
+  <div id="cardSlots"> </div>
+    </div>
+    </div>
+    
+    <!--alpm room puzzle two-->
+    <div id="alpmRoomPuzzleTwo" style="display: none;">
+    <h2>Enter the code you see on the Micro:bit.</h2>
+        <p><input id=alpmBlank><button onclick="checkAlpmPuzzleTwo()">ENTER</button></p>
+    </div>
+    <!--main room modal-->
+    <div id="levelModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Welcome to Level 14</h2>
+    </div>
+    <div class="modal-body">
+        <p>The home of Technologies for Learning. Enjoy your stay!<br>But not too long as your stomach growls in protest. <br>Solve the puzzles to unlock the exit so that you can finally go for lunch!</p><p>There are 5 rooms including this main room. 
+Direct your team leader to navigate around and look for clues!
+</p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+    <div id="toasterModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Bread Toaster</h2>
+    </div>
+    <div class="modal-body">
+        <p>This is a bread toaster.<br>There is a burnt bread in it. Eew. I hope your lunch will be much better.</p><p>Share a good practice while discarding food items in the office!</p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+     <div id="tabletModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>The Tablet</h2>
+    </div>
+    <div class="modal-body">
+        <p>The tablet contains some instructions:<br><i>Obtain 5 codes before attempting to exit.</i></p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+    <div id="fridgeModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>The Smart Fridge</h2>
+    </div>
+    <div class="modal-body">
+        <p>After attempting the questions below, obtain a passphrase from the gamemaster.</p><p>Each member of the team must answer any 1 question of their choosing:
+<ol><li>Demonstrate an aesthetic or kinesthetic skill</li>
+<li>Demonstrate the use of a foreign language or dialect</li>
+<li>Share about a new hobby or skill you picked up during WFH</li>
+<li>Share about something you feel thankful for this past week</li>
+    </ol>
+<p>As a team, attempt one of the following with the video function switched on:
+<ol><li>Form a star on the team leader’s screen and take a screenshot. Send it to the gamemaster for verification.</li>
+<li>Without any visual or audio cues, number off from 1 till every team member has numbered off once. Restart if more than 1 member speaks up at the same time, or if a wrong number is called.</li></ol>
+
+      <p>Passphrase: <input id="casualInput"><button onclick="checkCasualPuzzle()">SEND</button></p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+<!--sls room modal-->
+ <div id="agileModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>SLS Org Chart</h2>
+    </div>
+    <div class="modal-body">
+        <p>SLS uses a certain methodology for its development work. <br>Find out more about this methodology from a member of SLS. <br>He/she should also briefly share about the 4 different teams in the section and its job scopes.</p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+<div id="releaseModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>SLS New Releases</h2>
+    </div>
+    <div class="modal-body">
+        <p>SLS Release 13 is scheduled to be on Sep 2020. <br>Find out more about Release 13 from a member of SLS. <br>At the same time, learn about a major feature of SLS Release 14 from him/her!</p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+<div id="noteModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>The Notepad</h2>
+    </div>
+    <div class="modal-body">
+        <p>You see some scribbled notes.<br><i>username: methodology<br>password: new discussion feature on SLS</i></p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+<!--cotf room modal-->
+<div id="dtModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Design Thinking</h2>
+    </div>
+    <div class="modal-body">
+        <p>COTF uses a methodology for its development work. <br>Get a member of COTF to share about this methodology. <br>He/she should also share about its development tracks and the different primary and secondary partner schools.</p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+<div id="postModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>3M Post-Its</h2>
+    </div>
+    <div class="modal-body">
+        <p>This was COTF’s favourite tool before “Work from Home” arrangements. <br>Get a member of COTF to share about their latest online tools as they commence remote work.
+</p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+<div id="projectorModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Projector Button</h2>
+    </div>
+    <div class="modal-body">
+        <p>You see a red button. Would you press it?<br><button id="projectorButton" onclick="pressProjector()">PRESS</button></p><p id="cotfClue" style="display: none;">For this chest,<br>Secondary is first<br>and Primary is last.<br>Put the tool in the middle.</p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+<!--aied room modal-->
+<div id="aiModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>AIEd</h2>
+    </div>
+    <div class="modal-body">
+        <p>AIEd focuses on the development of three AI use cases. <br>Get a member of the AIEd section to share about its use-cases.</p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+<div id="droneModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>A Hovering Drone</h2>
+    </div>
+    <div class="modal-body">
+        <p>You see a note hanging from the drone:
+<br><i>Get a member from the AIEd section to share about the 7 different teams within AIEd. <br>He/she should also share about the different job scopes of the team.</i>
+</p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+<!--alpm modal-->
+<div id="folderModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>A Folder Containing Information on ALP</h2>
+    </div>
+    <div class="modal-body">
+        <p>ALP (ICT and Media) provides opportunities for students to critically appreciate and leverage digital technologies for creative expression through the production of artefacts to address real world issues. <br>Get a member from the ALP (ICT and Media) project to share about at least one form of artefact. <br>He/she should also share about the three tech domains.</p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+<div id="3dModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>The 3D Printer</h2>
+    </div>
+    <div class="modal-body">
+        <p>The Maker Education team provides direction in guiding the implementation of Digital Making in schools.</p>
+<p>The Maker Education team increases awareness of Maker Education in the local educational landscape through EDMs, webinars and social media platforms (i.e. Facebook and Twitter).</p><p>
+Part of the Maker Education team's work is looking at developing Maker Education Lead Schools to champion Making through co-strategising sessions and hardware provision.</p>
+<p>Together with this tool, the Maker Education team manages the ETD Makerspace, where it houses programmable robots, physical computing, and other digital fabrication tools.</p>
+<p>Get a member of the Maker Education Project to share about the stat board that it has collaboration with and some other examples of digital fabrication tools it owns. He/she should also share about the name of the EDM and also the location of ETD Makerspace.
+</p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+<div id="microModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>The Micro:Bit</h2>
+    </div>
+    <div class="modal-body">
+        <p>It seems to be displaying a message...<br><img src="images/microBit.gif"></p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>

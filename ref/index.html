@@ -1,0 +1,264 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/escaperoomstyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="src/jquery.ui.touch-punch.min.js"></script>
+    <script src="src/escaperoom.js"></script>
+    </head>
+    
+    <h1>The Zombie Apocalypse</h1>
+    <!--status-->
+    <div id="statusVaccine" style="display: none; background: green;">Preliminary Cure Obtained</div>
+    <div id="statusZombie" style="display: none; background: green;">Virus Cure Verified</div>
+    <div id="statusNuclear" style="display: none; background: green;">Nuclear Launch Aborted</div>
+    <!--intro-->
+    <div id="intro" style="display:block;"><p>The year is 2149.<br>Humans are infected by a virus that subsequently turn them into zombies.<br>This virus is code-named <strong>Crimzon</strong>.<br>The government has commissioned a lab to search for a cure.<br>Failing which, in the next 24 hours,<br>nuclear war heads will be launched,<br>in hopes of eradicating the virus.</p><p>You awoke in the government commissioned lab.<br>All your colleagues are dead.<br>You are the only person left to find a cure and stop the nukes.<br>Good luck.</p><img src="images/biohazard.png" width="10%"><br><button onclick="showMainRoom()">START</button></div>
+    <!--main room-->
+    <div id="mainRoom" style="display:none;"><img src="images/roomMain.png" usemap="#mainMap">
+    <map name="mainMap">
+        <area shape="rect" coords="275,55,310,85" onclick="openNoteModal()">
+        <area shape="rect" coords="455,40,490,85" onclick="openTabletModal()">
+        <area shape="rect" coords="640,205,675,215" onclick="openFileModal()">
+        <area shape="rect" coords="325,270,415,295" onclick="showExit()">
+        <area shape="rect" coords="0,120,35,145" onclick="showWarRoom()">
+        <div id="enterLab"></div>
+        <div id="denyLab"><area shape="rect" coords="185,0,220,25" onclick="hideLabRoom()"></div>
+        <area shape="rect" coords="520,0,555,25" onclick="showCageRoom()">
+        <area shape="rect" coords="705,125,740,145" onclick="showComputerRoom()">
+        </map>
+    </div>
+    <!--computer room-->
+    <div id="computerRoom" style="display: none;"><img src="images/roomCom.png" usemap="#comMap">
+    <map name="comMap">
+        <area shape="rect" coords="0,135,45,150" onclick="showMainRoom()">
+        <area shape="rect" coords="590,60,620,85" onclick="openPostModal()">
+        <area shape="rect" coords="290,45,495,125" onclick="showComputerPuzzle()">
+        </map>
+    </div>
+    <!--lab room-->
+    <div id="labRoom" style="display:none;"><img src="images/roomLab.png" usemap="#labMap">
+    <map name="labMap">
+        <area shape="rect" coords="70,40,115,80" onclick="openSignModal()">
+        <area shape="rect" coords="405,10,720,120" onclick="openRainbowModal()">
+        <area shape="rect" coords="435,195,505,205" onclick="openSyringeModal()">
+        <area shape="rect" coords="175,155,270,210" onclick="showLabPuzzle()">
+        <area shape="rect" coords="340,275,385,295" onclick="showMainRoom()">
+        </map>
+    </div>
+    <!--cage room-->
+    <div id="cageRoom" style="display:none;"><img src="images/roomCage.png" usemap="#cageMap">
+    <map name="cageMap">
+        <area shape="rect" coords="120,35,315,120" onclick="openWarningModal()">
+        <area shape="rect" coords="495,50,640,240" onclick="showCagePuzzle()">
+        <area shape="rect" coords="355,270,390,295" onclick="showMainRoom()">
+        </map>
+    </div>
+    <!--war room-->
+    <div id="warRoom" style="display:none;"><img src="images/roomWar.png" usemap="#warMap">
+    <map name="warMap">
+        <area shape="rect" coords="715,255,745,280" onclick="showMainRoom()">
+        <area shape="rect" coords="75,35,135,270" onclick="openMissileModal()">
+        <area shape="rect" coords="330,75,580,220" onclick="openMushroomModal()">
+        <area shape="rect" coords="630,80,690,140" onclick="openMorseModal()">
+        <area shape="rect" coords="160,155,300,225" onclick="showWarPuzzle()">
+        </map>
+    </div>
+    <!--exit fail-->
+    <div id="exitFail" style="display:none;"><h2>Oh no!</h2>
+        <div id="failZombie" style="display: none;">You forgot to retrieve the cure for the Crimzon virus.</div>
+        <div id="failNuclear" style="display: none;">You forgot to abort the nuclear launch.</div>
+        <p><strong>GAME OVER</strong></p><br>
+        <button onclick="window.location.reload()">TRY AGAIN</button></div>
+    <!--exit success-->
+    <div id="exitSuccess" style="display:none;"><h2>Congratulations!</h2><p>You have found a cure for the Crimzon virus and successfully prevented the nukes from launching.<br>You have saved the planet!</p></div>
+    <!--computer puzzle-->
+    <div id="computerPuzzle" style="display:none;"><p>Please enter the project name:<br><input type="text" id="com1"><br>Please enter case no.<br><input type="text" id="com2"><br><button onclick="checkCom()">LOGIN</button></p></div>
+    <!--lab puzzle-->
+    <div id="labPuzzle" style="display: none;"><h2>Turn on the PCR Machine</h2>
+    <div id="content">
+  <div id="cardPile"> </div>
+  <div id="cardSlots"> </div></div>
+    </div>
+    <div id="labPuzzle2" style="display: none;">
+    <h2>The PCR Machine Switches On.</h2><p>Please select a DNA to clone:<br><select id="patientName"><option disabled selected>Patient Name</option><option value="1">Peter Parker</option><option value="2">Peter Porker</option><option value="3">Peni Parker</option></select><br><button onclick="checkLabPuzzle2()">CLONE</button>
+    </div>
+    <!--cage puzzle-->
+    <div id="cagePuzzle" style="display: none;"><h2>You see a padlock.</h2>
+    <select id="padOne">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        </select>
+        <select id="padTwo">
+        <option value="1">A</option>
+            <option value="2">B</option>
+        <option value="3">C</option>
+        <option value="4">D</option>
+        <option value="5">E</option>
+        </select>
+        <select id="padThree">
+        <option value="1">1</option>
+            <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        </select>
+        <select id="padFour">
+        <option value="1">A</option>
+            <option value="2">B</option>
+        <option value="3">C</option>
+        <option value="4">D</option>
+        <option value="5">E</option>
+        </select><br><button onclick="checkCagePuzzle()">UNLOCK</button>
+    </div>
+    <!--war puzzle-->
+    <div id="warPuzzle" style="display: none;"><h2>The Missile Launch</h2><p>Key in the deactivation codes to prevent the nukes from launching.</p>
+    <table border="1"><tr><td>.</td><td>/</td><td>.</td><td>/</td><td>.</td><td>/</td><td>.</td><td>/</td><td>.</td><td>/</td></tr><tr><td><input type="checkbox" id="c1"></td><td><input type="checkbox" id="c2"></td><td><input type="checkbox" id="c3"></td><td><input type="checkbox" id="c4"></td><td><input type="checkbox" id="c5"></td><td><input type="checkbox" id="c6"></td><td><input type="checkbox" id="c7"></td><td><input type="checkbox" id="c8"></td><td><input type="checkbox" id="c9"></td><td><input type="checkbox" id="c10"></td></tr><tr><td><input type="checkbox" id="c11"></td><td><input type="checkbox" id="c12"></td><td><input type="checkbox" id="c13"></td><td><input type="checkbox" id="c14"></td><td><input type="checkbox" id="c15"></td><td><input type="checkbox" id="c16"></td><td><input type="checkbox" id="c17"></td><td><input type="checkbox" id="c18"></td><td><input type="checkbox" id="c19"></td><td><input type="checkbox" id="c20"></td></tr><tr><td><input type="checkbox" id="c21"></td><td><input type="checkbox" id="c22"></td><td><input type="checkbox" id="c23"></td><td><input type="checkbox" id="c24"></td><td><input type="checkbox" id="c25"></td><td><input type="checkbox" id="c26"></td><td><input type="checkbox" id="c27"></td><td><input type="checkbox" id="c28"></td><td><input type="checkbox" id="c29"></td><td><input type="checkbox" id="c30"></td></tr><tr><td><input type="checkbox" id="c31"></td><td><input type="checkbox" id="c32"></td><td><input type="checkbox" id="c33"></td><td><input type="checkbox" id="c34"></td><td><input type="checkbox" id="c35"></td><td><input type="checkbox" id="c36"></td><td><input type="checkbox" id="c37"></td><td><input type="checkbox" id="c38"></td><td><input type="checkbox" id="c39"></td><td><input type="checkbox" id="c40"></td></tr><tr><td><input type="checkbox" id="c41"></td><td><input type="checkbox" id="c42"></td><td><input type="checkbox" id="c43"></td><td><input type="checkbox" id="c44"></td><td><input type="checkbox" id="c45"></td><td><input type="checkbox" id="c46"></td><td><input type="checkbox" id="c47"></td><td><input type="checkbox" id="c48"></td><td><input type="checkbox" id="c49"></td><td><input type="checkbox" id="c50"></td></tr><tr><td><input type="checkbox" id="c51"></td><td><input type="checkbox" id="c52"></td><td><input type="checkbox" id="c53"></td><td><input type="checkbox" id="c54"></td><td><input type="checkbox" id="c55"></td><td><input type="checkbox" id="c56"></td><td><input type="checkbox" id="c57"></td><td><input type="checkbox" id="c58"></td><td><input type="checkbox" id="c59"></td><td><input type="checkbox" id="c60"></td></tr></table><br><button onclick="checkWarPuzzle()">DEACTIVATE</button>
+    </div>
+    <!--main room modals-->
+    <!-- The Modal -->
+<div id="noteModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>The Notepad</h2>
+    </div>
+    <div class="modal-body">
+        <p><i>Instructions to solving the apocalypse, in order:<br>1. Choose the correct DNA to clone<br>2. Trial the cure<br>3. Disable the nuclear warheads</i></p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+    <div id="tabletModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>The Tablet</h2>
+    </div>
+    <div class="modal-body">
+        <p>You see a tablet with 3 buttons.</p>
+        <button onclick="showBut1()">A</button><button onclick="showBut2()">B</button><button onclick="showBut3()">C</button>
+        <div id="tabletBut1" style="display:none;"><p><strong><i>12</i></strong></p></div>
+        <div id="tabletBut2" style="display:none;"><p><strong><i>AE</i></strong></p></div>
+        <div id="tabletBut3" style="display:none;"><p><strong>73</strong></p></div>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+        <div id="fileModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>The Confidential File</h2>
+    </div>
+    <div class="modal-body">
+        <p>You see a file marked TOP SECRET.</p>
+        <p><img src="images/mainFile.png"></p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+    <!--com room modal-->
+         <div id="postModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>The Post It</h2>
+    </div>
+    <div class="modal-body">
+        <p><i>We finally found success with the vaccine.<br>It took us more than <strong>50</strong> test subjects.</i></p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+     <div id="patientModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>The Cure</h2>
+    </div>
+    <div class="modal-body">
+        <p>Blood plasma of patient: Peni Parker was found to contain the vaccine of the crimzon virus.<br>A door unlocks.</p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+      <div id="signModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>The Hazard Sign</h2>
+    </div>
+    <div class="modal-body">
+        <p>WARNING: please observe lab protocols and wear PPE <strong>at all times</strong>!</p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+     <div id="rainbowModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>The Rainbow Poster</h2>
+    </div>
+    <div class="modal-body">
+        <p>You found a scribble on the poster.<br><br><i>enter the colors of the rainbow,<br>starting from the shortest.</i></p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+    <div id="syringeModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>The Syringe</h2>
+    </div>
+    <div class="modal-body">
+        <p>You found a syringe, maybe you can use this later to store the cure.</p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+    <!--cage room modal-->
+      <div id="warningModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>The Warning Label</h2>
+    </div>
+    <div class="modal-body">
+        <p>Please ensure you have the <strong>correct</strong> cure, before releasing the zombie!!!</p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+    <!--war room modal-->
+    <div id="missileModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>The Missile</h2>
+    </div>
+    <div class="modal-body">
+        <p>This missile will launch in <strong>6 hours</strong><br>Deactivation code: ABC123</p>
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+    <div id="mushroomModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>The Surveillance</h2>
+    </div>
+    <div class="modal-body">
+        <p>The images show the current situation of other parts of the world.</p><img src="images/warMushroom.gif">
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+      <div id="morseModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>The Deactivation Sequence</h2>
+    </div>
+    <div class="modal-body">
+        <img src="images/warMorse.png" width="50%">
+    </div>
+    <div class="modal-footer">
+    </div></div></div>
+</html>
