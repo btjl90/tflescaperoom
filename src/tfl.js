@@ -56,7 +56,7 @@ function showAlpmRoom() {
     document.getElementById("mainRoom").style.display = 'none';
     document.getElementById("mainRoomPuzzle").style.display = 'none';
     document.getElementById("alpmRoom").style.display = 'block';
-    alert("Welcome to the cave of ALP/Makers Education!");
+    alert("Welcome to the cave of ALP/Maker Education!");
 }
 function checkMainPuzzle() {
     if(document.getElementById("c1").checked == true && document.getElementById("c2").checked == false && document.getElementById("c3").checked == false && document.getElementById("c4").checked == false && document.getElementById("c5").checked == false && document.getElementById("c6").checked == false && document.getElementById("c7").checked == false && document.getElementById("c8").checked == false && document.getElementById("c9").checked == false && document.getElementById("c10").checked == true && document.getElementById("c11").checked == false && document.getElementById("c12").checked == true && document.getElementById("c13").checked == false && document.getElementById("c14").checked == false && document.getElementById("c15").checked == false && document.getElementById("c16").checked == false && document.getElementById("c17").checked == false && document.getElementById("c18").checked == false && document.getElementById("c19").checked == true && document.getElementById("c20").checked == false && document.getElementById("c21").checked == false && document.getElementById("c22").checked == false && document.getElementById("c23").checked == false && document.getElementById("c24").checked == true && document.getElementById("c25").checked == false && document.getElementById("c26").checked == false && document.getElementById("c27").checked == false && document.getElementById("c28").checked == false && document.getElementById("c29").checked == true && document.getElementById("c30").checked == true && document.getElementById("c31").checked == false && document.getElementById("c32").checked == false && document.getElementById("c33").checked == false && document.getElementById("c34").checked == false && document.getElementById("c35").checked == false && document.getElementById("c36").checked == false && document.getElementById("c37").checked == false && document.getElementById("c38").checked == false && document.getElementById("c39").checked == true && document.getElementById("c40").checked == false) {
@@ -73,7 +73,7 @@ function showSlsPuzzle() {
     document.getElementById("slsRoomPuzzle").style.display = 'block';
 }
 function checkSlsPuzzle() {
-    if(document.getElementById("slsUserInput").value == 'AGILE' && document.getElementById("slsPassInput").value == 'Forum' || document.getElementById("slsPassInput").value == 'forum') {
+    if(document.getElementById("slsUserInput").value == 'AGILE' && document.getElementById("slsPassInput").value == 'forum') {
         alert("Congratulations, you have obtained one part of the key to unlock the exit, do not type in the chat: G");
         slsCode = 1;
     } else {
@@ -101,7 +101,7 @@ function showAiedPuzzle() {
     document.getElementById("aiedRoomPuzzle").style.display = 'block';
 }
 function checkAiedPuzzle() {
-    if(document.getElementById("aied1").value == 1 && document.getElementById("aied2").value == 2 && document.getElementById("aied3").value == 2) {
+    if(document.getElementById("aied1").value == 1 && document.getElementById("aied2").value == 2 && document.getElementById("aied3").value == 1) {
         alert("Congratulations, the droid awakens and you have obtained one part of the key to unlock the exit, do not type in the chat: NU");
         aiedCode = 1;
     } else {
@@ -155,7 +155,7 @@ function init() {
   }
 
   // Create the card slots
-  var words = ['Tools of Maker Education', 'ALP Tech Domain'];
+  var words = ['Maker Space Tool', 'Key Domain Area of ALP'];
   for ( var i=1; i<=2; i++ ) {
     $('<div>' + words[i-1] + '</div>').data( 'number', i ).appendTo( '#cardSlots' ).droppable( {
       accept: '#cardPile div',
