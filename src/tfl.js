@@ -20,7 +20,7 @@ function showMainRoom() {
 //main room
 function checkCasualPuzzle() {
     if(document.getElementById("casualInput").value == 'tfl!') {
-       alert("Congratulations, you have obtained one part of the key to unlock the exit, do not type in the chat: A");
+       alert("Congratulations, you have obtained one part of the key to unlock the exit, do not type in the chat\n A");
         casualCode = 1;
     } else {
         alert("Please attempt the questions.");
@@ -74,7 +74,7 @@ function showSlsPuzzle() {
 }
 function checkSlsPuzzle() {
     if(document.getElementById("slsUserInput").value == 'AGILE' && document.getElementById("slsPassInput").value == 'forum') {
-        alert("Congratulations, you have obtained one part of the key to unlock the exit, do not type in the chat: G");
+        alert("Congratulations, you have obtained one part of the key to unlock the exit, do not type in the chat\n G");
         slsCode = 1;
     } else {
         alert("Nothing seem to happen.")
@@ -90,7 +90,7 @@ function showCotfPuzzle() {
 }
 function checkCotfPuzzle() {
     if(document.getElementById("cotf1").value == '4' && document.getElementById("cotf2").value == '3' && document.getElementById("cotf3").value == '7' && document.getElementById("cotf4").value == '2') {
-       alert("Congratulations, the chest opened and you have obtained one part of the key to unlock the exit, do not type in the chat: TA");
+       alert("Congratulations, the chest opened and you have obtained one part of the key to unlock the exit, do not type in the chat\n TA");
         cotfCode = 1;
        } else {
            alert("Nothing seem to happen.");
@@ -102,7 +102,7 @@ function showAiedPuzzle() {
 }
 function checkAiedPuzzle() {
     if(document.getElementById("aied1").value == 1 && document.getElementById("aied2").value == 2 && document.getElementById("aied3").value == 1) {
-        alert("Congratulations, the droid awakens and you have obtained one part of the key to unlock the exit, do not type in the chat: NU");
+        alert("Congratulations, the droid awakens and you have obtained one part of the key to unlock the exit, do not type in the chat\n NU");
         aiedCode = 1;
     } else {
         alert("Nothing seem to happen.");
@@ -115,7 +115,7 @@ function showAlpmPuzzle() {
 function checkAlpmPuzzleTwo() {
     if(document.getElementById("alpmBlank").value == 'ALP9ME8') {
         alpmCode = 1;
-        alert("Congratulations, you have obtained one part of the key to unlock the exit, do not type in the chat: IK");
+        alert("Congratulations, you have obtained one part of the key to unlock the exit, do not type in the chat\n IK");
     } else {
         alert("Nothing seem to happen.");
     }
