@@ -20,10 +20,12 @@ function showMainRoom() {
 //main room
 function checkCasualPuzzle() {
     if(document.getElementById("casualInput").value == 'tfl!') {
-       alert("Congratulations, you have obtained one part of the key to unlock the exit, do not type in the chat\n A");
+       //alert("Congratulations, you have obtained one part of the key to unlock the exit, do not type in the chat.\n A");
+        document.getElementById("mainModalSuccess").style.display = "block";
         casualCode = 1;
     } else {
-        alert("Please attempt the questions.");
+        //alert("Please attempt the questions.");
+        document.getElementById("modalFail").style.display = "block";
     }
 }
 function checkStatus() {
@@ -31,41 +33,49 @@ function checkStatus() {
     if(slsCode == 1 && aiedCode == 1 && cotfCode == 1 && alpmCode == 1 && casualCode == 1) {
         document.getElementById("mainRoomPuzzle").style.display = 'block';
     } else {
-        alert("Please obtain " + totalSolve + " keys before attempting to exit.");
+        //alert("Please obtain " + totalSolve + " keys before attempting to exit.");
+        document.getElementById("insert").innerHTML = totalSolve;
+        document.getElementById("statusFail").style.display = 'block';
     }
 }
 function showSlsRoom() {
     document.getElementById("mainRoom").style.display = 'none';
     document.getElementById("mainRoomPuzzle").style.display = 'none';
     document.getElementById("slsRoom").style.display = 'block';
-    alert("Welcome to the lair of SLS!");
+    //alert("Welcome to the lair of SLS!");
+    document.getElementById("slsRoomModal").style.display = 'block';
 }
 function showAiedRoom() {
     document.getElementById("mainRoom").style.display = 'none';
     document.getElementById("mainRoomPuzzle").style.display = 'none';
     document.getElementById("aiedRoom").style.display = 'block';
-    alert("Welcome to the den of AIEd!");
+    //alert("Welcome to the den of AIEd!");
+    document.getElementById("aiedRoomModal").style.display = 'block';
 }
 function showCotfRoom() {
     document.getElementById("mainRoom").style.display = 'none';
     document.getElementById("mainRoomPuzzle").style.display = 'none';
     document.getElementById("cotfRoom").style.display = 'block';
-    alert("Welcome to the sanctuary of COTF!");
+    //alert("Welcome to the sanctuary of COTF!");
+    document.getElementById("cotfRoomModal").style.display = 'block';
 }
 function showAlpmRoom() {
     document.getElementById("mainRoom").style.display = 'none';
     document.getElementById("mainRoomPuzzle").style.display = 'none';
     document.getElementById("alpmRoom").style.display = 'block';
-    alert("Welcome to the cave of ALP/Maker Education!");
+    //alert("Welcome to the cave of ALP/Maker Education!");
+    document.getElementById("alpmRoomModal").style.display = 'block';
 }
 function checkMainPuzzle() {
     if(document.getElementById("c1").checked == true && document.getElementById("c2").checked == false && document.getElementById("c3").checked == false && document.getElementById("c4").checked == false && document.getElementById("c5").checked == false && document.getElementById("c6").checked == false && document.getElementById("c7").checked == false && document.getElementById("c8").checked == false && document.getElementById("c9").checked == false && document.getElementById("c10").checked == true && document.getElementById("c11").checked == false && document.getElementById("c12").checked == true && document.getElementById("c13").checked == false && document.getElementById("c14").checked == false && document.getElementById("c15").checked == false && document.getElementById("c16").checked == false && document.getElementById("c17").checked == false && document.getElementById("c18").checked == false && document.getElementById("c19").checked == true && document.getElementById("c20").checked == false && document.getElementById("c21").checked == false && document.getElementById("c22").checked == false && document.getElementById("c23").checked == false && document.getElementById("c24").checked == true && document.getElementById("c25").checked == false && document.getElementById("c26").checked == false && document.getElementById("c27").checked == false && document.getElementById("c28").checked == false && document.getElementById("c29").checked == true && document.getElementById("c30").checked == true && document.getElementById("c31").checked == false && document.getElementById("c32").checked == false && document.getElementById("c33").checked == false && document.getElementById("c34").checked == false && document.getElementById("c35").checked == false && document.getElementById("c36").checked == false && document.getElementById("c37").checked == false && document.getElementById("c38").checked == false && document.getElementById("c39").checked == true && document.getElementById("c40").checked == false) {
-        alert("You successfully called for Solar Man!");
+        //alert("You successfully called for Solar Man!");
+        document.getElementById("exitModalSuccess").style.display = 'block';
         document.getElementById("mainRoom").style.display = 'none';
         document.getElementById("mainRoomPuzzle").style.display = 'none';
         document.getElementById("exitRoom").style.display = 'block';
     } else {
-        alert("Nothing seem to happen.");
+        //alert("Nothing seem to happen.");
+        document.getElementById("modalFail").style.display = "block";
     }
 }
 //sls room
@@ -74,10 +84,12 @@ function showSlsPuzzle() {
 }
 function checkSlsPuzzle() {
     if(document.getElementById("slsUserInput").value == 'AGILE' && document.getElementById("slsPassInput").value == 'forum') {
-        alert("Congratulations, you have obtained one part of the key to unlock the exit, do not type in the chat\n G");
+        //alert("Congratulations, you have obtained one part of the key to unlock the exit, do not type in the chat\n G");
+        document.getElementById("slsModalSuccess").style.display = "block";
         slsCode = 1;
     } else {
-        alert("Nothing seem to happen.")
+        //alert("Nothing seem to happen.");
+        document.getElementById("modalFail").style.display = "block";
     }
 }
 //cotf room
@@ -90,10 +102,12 @@ function showCotfPuzzle() {
 }
 function checkCotfPuzzle() {
     if(document.getElementById("cotf1").value == '4' && document.getElementById("cotf2").value == '3' && document.getElementById("cotf3").value == '7' && document.getElementById("cotf4").value == '2') {
-       alert("Congratulations, the chest opened and you have obtained one part of the key to unlock the exit, do not type in the chat\n TA");
+       //alert("Congratulations, the chest opened and you have obtained one part of the key to unlock the exit, do not type in the chat\n TA");
+        document.getElementById("cotfModalSuccess").style.display = "block";
         cotfCode = 1;
        } else {
-           alert("Nothing seem to happen.");
+           //alert("Nothing seem to happen.");
+           document.getElementById("modalFail").style.display = "block";
        }
 }
 //aied room
@@ -102,10 +116,12 @@ function showAiedPuzzle() {
 }
 function checkAiedPuzzle() {
     if(document.getElementById("aied1").value == 1 && document.getElementById("aied2").value == 2 && document.getElementById("aied3").value == 1) {
-        alert("Congratulations, the droid awakens and you have obtained one part of the key to unlock the exit, do not type in the chat\n NU");
+        //alert("Congratulations, the droid awakens and you have obtained one part of the key to unlock the exit, do not type in the chat\n NU");
+        document.getElementById("aiedModalSuccess").style.display = "block";
         aiedCode = 1;
     } else {
-        alert("Nothing seem to happen.");
+        //alert("Nothing seem to happen.");
+        document.getElementById("modalFail").style.display = "block";
     }
 }
 //alpm room
@@ -115,9 +131,11 @@ function showAlpmPuzzle() {
 function checkAlpmPuzzleTwo() {
     if(document.getElementById("alpmBlank").value == 'ALP9ME8') {
         alpmCode = 1;
-        alert("Congratulations, you have obtained one part of the key to unlock the exit, do not type in the chat\n IK");
+        //alert("Congratulations, you have obtained one part of the key to unlock the exit, do not type in the chat\n IK");
+        document.getElementById("alpmModalSuccess2").style.display = "block";
     } else {
-        alert("Nothing seem to happen.");
+        //alert("Nothing seem to happen.");
+        document.getElementById("modalFail").style.display = "block";
     }
 }
 //for alpm room dnd
@@ -199,7 +217,8 @@ function handleCardDrop( event, ui ) {
   if ( correctCards == 2 ) {
     document.getElementById("alpmRoomPuzzle").style.display = 'none';
     document.getElementById("alpmRoomPuzzleTwo").style.display = 'block';
-    alert("Another puzzle has appeared...");
+    //alert("Another puzzle has appeared...");
+    document.getElementById("alpmModalSuccess").style.display = "block";
       init();
   }
 }
@@ -300,5 +319,44 @@ window.onclick = function(event) {
   } 
     if (event.target == document.getElementById("microModal")) {
     document.getElementById("microModal").style.display = "none";
+  } 
+    if (event.target == document.getElementById("mainModalSuccess")) {
+    document.getElementById("mainModalSuccess").style.display = "none";
+  } 
+    if (event.target == document.getElementById("modalFail")) {
+    document.getElementById("modalFail").style.display = "none";
+  } 
+     if (event.target == document.getElementById("alpmModalSuccess")) {
+    document.getElementById("alpmModalSuccess").style.display = "none";
+  } 
+    if (event.target == document.getElementById("slsModalSuccess")) {
+    document.getElementById("slsModalSuccess").style.display = "none";
+  } 
+    if (event.target == document.getElementById("exitModalSuccess")) {
+    document.getElementById("exitModalSuccess").style.display = "none";
+  } 
+    if (event.target == document.getElementById("cotfModalSuccess")) {
+    document.getElementById("cotfModalSuccess").style.display = "none";
+  } 
+    if (event.target == document.getElementById("aiedModalSuccess")) {
+    document.getElementById("aiedModalSuccess").style.display = "none";
+  } 
+    if (event.target == document.getElementById("alpmModalSuccess2")) {
+    document.getElementById("alpmModalSuccess2").style.display = "none";
+  } 
+    if (event.target == document.getElementById("slsRoomModal")) {
+    document.getElementById("slsRoomModal").style.display = "none";
+  } 
+    if (event.target == document.getElementById("aiedRoomModal")) {
+    document.getElementById("aiedRoomModal").style.display = "none";
+  } 
+    if (event.target == document.getElementById("cotfRoomModal")) {
+    document.getElementById("cotfRoomModal").style.display = "none";
+  } 
+    if (event.target == document.getElementById("alpmRoomModal")) {
+    document.getElementById("alpmRoomModal").style.display = "none";
+  } 
+    if (event.target == document.getElementById("statusFail")) {
+    document.getElementById("statusFail").style.display = "none";
   } 
 }
